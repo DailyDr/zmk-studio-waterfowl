@@ -9,9 +9,7 @@
 
 / {
 	chosen {
-		zmk,physical-layout = &physical_layout0;
-		zephyr,display = &oled;
-		zmk,kscan = &kscan0;
+		zmk,matrix-transform;
 		
 	};
 
