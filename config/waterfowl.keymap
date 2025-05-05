@@ -9,9 +9,12 @@
 #include <dt-bindings/zmk/bt.h>
 #include "waterfowl-layouts.dtsi"
 
-chosen { /delete-property/ zmk,matrix-transform; }; 
+
 
 / {
+
+chosen { /delete-property/ zmk,matrix-transform; }; 
+
     keymap {
         compatible = "zmk,keymap";
 
