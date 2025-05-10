@@ -12,6 +12,50 @@
 
 
 / {
+ behaviors {
+        td0: tap_dance_0 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_0";
+            #binding-cells = <0>;
+            tapping-term-ms = <175>;
+            bindings = <&kp APOS>, <&kp RET>, <&kp SEMI>;
+        };
+    };
+
+ 
+    behaviors {
+        td1: tap_dance_1 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_1";
+            #binding-cells = <0>;
+            tapping-term-ms = <175>;
+            bindings = <&kp Z>, <&kp LSFT>;
+        };
+    };
+
+    mt {
+	tapping-term-ms = <175>;
+	};
+
+ 
+    combos {
+        compatible = "zmk,combos";
+        combo_bspc {
+            timeout-ms = <50>;
+            key-positions = <8 9>;
+            bindings = <&kp BSPC>;
+        };
+        combo_esc {
+            timeout-ms = <50>;
+            key-positions = <0 1>;
+            bindings = <&kp ESC>;
+        };
+        combo_tab {
+            timeout-ms = <50>;
+            key-positions = <10 12>;
+            bindings = <&kp TAB>;
+        };
+    };
 
 chosen { /delete-property/ zmk,matrix-transform; }; 
 
@@ -34,9 +78,9 @@ chosen { /delete-property/ zmk,matrix-transform; };
  */
             bindings = <
     &kp Q       &kp W       &kp E       &kp R       &kp T           &kp Y   &kp U       &kp I       &kp O       &kp P
-    &mt LGUI A  &mt LALT S  &mt LCTRL D &mt LSHFT F &kp G           &kp H   &mt LSHFT J &mt LCTRL K &mt LALT L  &mt LGUI SEMI
-    &kp Z       &kp X       &kp C       &kp V       &kp B           &kp N   &kp M       &kp COMMA   &kp DOT     &kp FSLH
-    &kp N1      &lt 3 DEL   &lt 1 SPACE &kp TAB     &kp N2          &kp N3  &kp ESC     &kp BSPC    &lt 2 RET   &kp N4
+    &kp A       &kp S       &kp D       &kp F       &kp G           &kp H   &kp J       &kp K       &kp L       &td0
+    &mt LSHIFT Z       &kp X       &kp C       &kp V       &kp B           &kp N   &kp M       &kp COMMA   &kp DOT     &kp RSFT
+    &mo 1      &kp LCTRL   &lt 3 SPACE &kp LGUI     &kp N2          &kp C_PP  &kp LALT     &lt 1 SPACE    &lt 2 RET   &kp SLASH
             >;
 
             sensor-bindings = <
@@ -62,10 +106,10 @@ chosen { /delete-property/ zmk,matrix-transform; };
  *          `-----'   `--------------------'            `--------------------'   `-----'
  */
             bindings = <
-    &trans      &kp PG_UP   &kp UP      &kp PG_DN   &trans                  &kp FSLH    &kp N7  &kp N8      &kp N9      &kp MINUS
-    &kp HOME    &kp LEFT    &kp DOWN    &kp RIGHT   &kp END                 &kp EQUAL   &kp N4  &kp N5      &kp N6      &kp PLUS
-    &trans      &trans      &kp INS     &trans      &trans                  &kp N0      &kp N1  &kp N2      &kp N3      &kp ASTERISK
-    &kp N1      &lt 3 DEL   &lt 1 SPACE &kp TAB     &kp N2                  &kp N3      &kp ESC &kp BSPC    &lt 2 RET   &kp N4
+    &kp N1      &kp N2      &kp N3      &kp N4      &kp N5                  &kp N6      &kp N7  &kp N8      &kp N9      &kp N0
+    &kp HOME    &kp PG_UP    &kp UP    &kp PG_DN   &kp END                 &kp EQUAL   &kp N4  &kp N5      &kp N6      &kp PLUS
+    &kp LSFT      &kp LEFT    &kp DOWN    &kp RIGHT      &kp INS            &kp N0      &kp MINUS  &kp EQUAL      &kp PLUS      &kp ASTERISK
+    &kp N1      &lt 3 DEL   &lt 3 SPACE &kp TAB     &kp N2                  &kp N3      &kp ESC &kp BSPC    &lt 2 RET   &kp N4
             >;
 
             sensor-bindings = <
@@ -120,9 +164,9 @@ chosen { /delete-property/ zmk,matrix-transform; };
  *          `-----'   `--------------------'            `--------------------'   `-----'
  */
             bindings = <
-    &studio_unlock          &trans          &bt BT_CLR      &trans          &sys_reset          &sys_reset  &kp F7  &kp F8      &kp F9      &kp F11
-    &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4        &trans      &kp F4  &kp F5      &kp F6      &kp F12
-    &trans          &trans          &trans          &trans          &trans              &kp F10     &kp F1  &kp F2      &kp F3      &kp F13
+    &studio_unlock         &trans          &bt BT_CLR      &trans          &sys_reset              &trans 	    &kp F1  &kp F2      &kp F3      &kp F4
+    &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4        &studio_unlock      &kp F5  &kp F6      &kp F7      &kp F8
+    &trans          &trans          &trans          &trans          &trans              &kp F13     &kp F9  &kp F10      &kp F11      &kp F12
     &kp N1          &lt 3 DEL       &lt 1 SPACE     &kp TAB         &kp N2              &kp N3      &kp ESC &kp BSPC    &lt 2 RET   &kp N4
             >;
 
